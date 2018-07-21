@@ -13,8 +13,10 @@ git clone https://github.com/jonatanzacchi/curso.git
 
 git pull origin master --allow-unrealted-histories
 
+ARQUIVO DIRETO
 
-git add .     > adiciona arquivos novos para commit no repositório
-git commit     > gera atualização dos arquivos
+
+git add .     > adiciona arquivos novos para commit no repositï¿½rio
+git commit     > gera atualizaï¿½ï¿½o dos arquivos
 git push    > empurra os arquivos para o github
 git clone https://github.com/USER/REPO.git
