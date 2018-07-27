@@ -18,6 +18,9 @@
             margin-top: 5%;
         }
     </style>
+    <?php
+        $dataativacao = date('d/m/y h:m:s');
+    ?>
 
     <body>    
         <!--<center>-->
@@ -57,11 +60,10 @@
             </div>
         </div>
 
-
         <div class="container">
             <!-- The Modal -->
             <div class="modal" id="myModal">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -73,7 +75,7 @@
                         <div class="modal-body">
                             <form action="<?php echo base_url() . 'usuario/novo' ?>" name="formulario" method="post">
                                 <div class="row">
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">			
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">			
                                         <label>Usuário:</label>
                                         <input type="text" name="usuario" id="usuario" class="form-control" required>
                                     </div>
@@ -84,14 +86,21 @@
                                     <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <label>Status:</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status" id="status" value="1">
+                                            <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
                                             <label class="form-check-label" for="status">Ativo</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="status" id="status" value="2">
                                             <label class="form-check-label" for="status">Desativado</label>
                                         </div>
-
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <label>Data Ativação:</label>
+                                        <input type="datetime" name="dataativacao" id="dataativacao" readonly class="form-control" value="<?php echo $dataativacao ?>" required>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <label>Data Inativação:</label>
+                                        <input type="datetime-local" name="datainativacao" id="datainativacao" class="form-control" value="" required>
                                     </div>
 
                                     <div class="form-group col-md-12" align="right">				
