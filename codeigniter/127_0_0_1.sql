@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jul-2018 às 22:26
+-- Generation Time: 27-Jul-2018 às 22:31
 -- Versão do servidor: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `aula`
 --
+CREATE DATABASE IF NOT EXISTS `aula` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `aula`;
 
 -- --------------------------------------------------------
 
