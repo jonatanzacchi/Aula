@@ -61,9 +61,10 @@ class Login extends CI_Controller {
 
         $data=$this->Usuario_model->login_user($user_login['usuario'],$user_login['senha']);
         if($data){
+			$this->session->set_userdata('idUsuario',$data['idUsuario']);
             $this->session->set_userdata('usuario',$data['usuario']);
             $this->session->set_userdata('senha',$data['senha']);
-			$this->session->set_userdata('layout',$data['layout']);
+			$this->session->set_userdata('saldo',$data['saldo']);
             // $this->load->view('usuario.php');
             redirect($this->index().'usuario'); 
         }else{

@@ -43,7 +43,7 @@
 				<a class="nav-link" href="<?php echo base_url().'estado'?>">Estados</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url().'usuario'?>">Usuarios</a>
+				<a class="nav-link" href="<?php echo base_url().'usuario'?>">Usuários</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url().'alterarSenha'?>">Alterar Senha</a>

@@ -9,6 +9,11 @@
 		header('location:login');
 	}
 ?>
+<script>
+	function mostraIdEstado(idEstado){
+		alert(idEstado);
+	}
+</script>
 	<div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">
 		<div id="container">
 			<h1 align="center">Formulário</h1>
@@ -57,7 +62,7 @@
 					</div>
 					<div class="form-group col-md-2">
 						<label>UF:</label>
-						<select class="form-control"  name ="uf" required>
+						<select class="form-control"  name ="uf" onchange='mostraIdEstado($(this).val())' required>
 							<option value="" disabled selected>Selecione</option>
 							<?php foreach ($listaestados as $listar){ ?>
 								<option value="<?php echo $listar->idEstado ?>"><?php echo $listar->uf ?></option>

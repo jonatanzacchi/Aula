@@ -33,10 +33,20 @@ class Usuario_model extends CI_Model {
     function editarUsuario($idUsuario){   
         $this->db->where('idUsuario', $idUsuario);
         $this->db->update('usuarios', $this);
-    }   
+    } 
     
-    
-    
+    function editarSaldo($idUsuario, $saldo){
+        $this->db->set('saldo', $saldo);
+        $this->db->where('idUsuario', $idUsuario);
+        $this->db->update('usuarios');
+    }
+	
+	function editarSaldoLogado($idLogado, $saldoLogado){
+        $this->db->set('saldo', $saldoLogado);
+        $this->db->where('idUsuario', $idLogado);
+        $this->db->update('usuarios');
+    }
+        
     public function login_user($usuario,$senha){
  
         $this->db->select('*');

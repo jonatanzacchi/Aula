@@ -1,10 +1,9 @@
-<?php
-	
-	if ((!isset($_SESSION['idUsuario']) == true) and (!isset ($_SESSION['usuario']) == true)) {
-		unset($_SESSION['idUsuario']);
-		unset($_SESSION['usuario']);
-		header('location:login');
-	}
+<?php	
+    if ((!isset($_SESSION['idUsuario']) == true) and (!isset ($_SESSION['usuario']) == true)) {
+            unset($_SESSION['idUsuario']);
+            unset($_SESSION['usuario']);
+            header('location:login');
+    }
 ?>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
@@ -20,15 +19,19 @@
                     </div>
                     <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <label>ID:</label>
-                        <input type="text" name="idUsuario" id="idUsuario" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($idUsuario) ? "" : $idUsuario); ?>">
+                        <input type="text" name="idUsuario" id="idUsuario" readonly="yes" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($idUsuario) ? "" : $idUsuario); ?>">
                     </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">			
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">			
                         <label>Usuário:</label>
                         <input type="text" name="usuario" id="usuario" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($usuario) ? "" : $usuario); ?>" required>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Senha:</label>
                         <input type="password" name="senha" id="senha" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($senha) ? "" : $senha); ?>" required>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label>Saldo:</label>
+                        <input type="text" name="saldo" id="saldo" class="form-control" value="<?php echo (!isset($saldo) ? "" : $saldo); ?>" required>
                     </div>
                     <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <label>Status:</label>
@@ -43,7 +46,8 @@
 
                     </div>
 
-                    <div class="form-group col-md-12" align="right">				
+                    <div class="form-group col-md-12" align="right">
+                        <a href="<?php echo base_url(). 'usuario' ?>" class="btn btn-danger">Cancelar</a>
                         <input type="submit" class="btn btn-success" value="Enviar">
                     </div>			
                 </div>
@@ -66,6 +70,7 @@
                                         <td align=center class="success"> ID </td>
                                         <td align=center class="success"> Usuário </td>
                                         <td align=center class="success"> Status </td>
+                                        <td align=center class="success"> Saldo </td>
                                         <td align=center class="success"> Ações </td>
                                     </tr>
                                 </thead>
@@ -77,9 +82,11 @@
                                             <td align=center><?php echo $listaUsuario->idUsuario; ?> </td>
                                             <td align=center><?php echo $listaUsuario->usuario; ?> </td>
                                             <td align=center><?php echo $listaUsuario->status; ?> </td>
+                                            <td align=center><?php echo "R$ " . $listaUsuario->saldo; ?> </td>
                                             <td align=center>
+                                                <a href="<?php echo base_url() . "usuario/saldo/$listaUsuario->idUsuario "?>"><button class="btn btn-primary">Saldo</button></a>
                                                 <a href="<?php echo base_url() . "usuario/edit/$listaUsuario->idUsuario"?>"><button class="btn btn-success">Editar</button></a>
-                                                <a href="<?php echo base_url() . "usuario/deleteUsuario?idUsuario=" . $listaUsuario->idUsuario ?>"><button class="btn btn-danger">Deletar</button></a>
+                                                <a href="<?php echo base_url() . "usuario/deleteUsuario?idUsuario=" . $listaUsuario->idUsuario ?>"><button class="btn btn-danger">Deletar</button></a>                                                
                                             </td>																		
                                         </tr>		
                                         <?php
