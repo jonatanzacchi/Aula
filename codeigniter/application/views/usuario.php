@@ -1,7 +1,7 @@
 <?php	
-    if ((!isset($_SESSION['idUsuario']) == true) and (!isset ($_SESSION['usuario']) == true)) {
-            unset($_SESSION['idUsuario']);
-            unset($_SESSION['usuario']);
+    if ((!isset($_SESSION['id']) == true) and (!isset ($_SESSION['user']) == true)) {
+            unset($_SESSION['id']);
+            unset($_SESSION['user']);
             header('location:login');
     }
 ?>
@@ -9,7 +9,6 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
         <div id="container">
             <h1 align="center">Usuários</h1>
-            
             <hr>	
             <form action="<?php echo base_url() . 'usuario/novo' ?>" name="formulario" method="post">
                 <div class="row">
@@ -19,19 +18,15 @@
                     </div>
                     <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <label>ID:</label>
-                        <input type="text" name="idUsuario" id="idUsuario" readonly="yes" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($idUsuario) ? "" : $idUsuario); ?>">
+                        <input type="text" name="id" id="id" readonly="yes" class="form-control" <?php echo (empty($id) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($id) ? "" : $id); ?>">
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">			
                         <label>Usuário:</label>
-                        <input type="text" name="usuario" id="usuario" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($usuario) ? "" : $usuario); ?>" required>
+                        <input type="text" name="usuario" id="usuario" class="form-control" <?php echo (empty($id) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($usuario) ? "" : $usuario); ?>" required>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Senha:</label>
-                        <input type="password" name="senha" id="senha" class="form-control" <?php echo (empty($idUsuario) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($senha) ? "" : $senha); ?>" required>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <label>Saldo:</label>
-                        <input type="text" name="saldo" id="saldo" class="form-control" value="<?php echo (!isset($saldo) ? "" : $saldo); ?>" required>
+                        <input type="password" name="senha" id="senha" class="form-control" <?php echo (empty($id) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($senha) ? "" : $senha); ?>" required>
                     </div>
                     <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <label>Status:</label>
@@ -70,7 +65,6 @@
                                         <td align=center class="success"> ID </td>
                                         <td align=center class="success"> Usuário </td>
                                         <td align=center class="success"> Status </td>
-                                        <td align=center class="success"> Saldo </td>
                                         <td align=center class="success"> Ações </td>
                                     </tr>
                                 </thead>
@@ -79,14 +73,13 @@
                                     foreach ($listaUsuario as $listaUsuario) {
                                         ?>
                                         <tr>
-                                            <td align=center><?php echo $listaUsuario->idUsuario; ?> </td>
-                                            <td align=center><?php echo $listaUsuario->usuario; ?> </td>
+                                            <td align=center><?php echo $listaUsuario->id; ?> </td>
+                                            <td align=center><?php echo $listaUsuario->user; ?> </td>
                                             <td align=center><?php echo $listaUsuario->status; ?> </td>
-                                            <td align=center><?php echo "R$ " . $listaUsuario->saldo; ?> </td>
                                             <td align=center>
-                                                <a href="<?php echo base_url() . "usuario/saldo/$listaUsuario->idUsuario "?>"><button class="btn btn-primary">Saldo</button></a>
-                                                <a href="<?php echo base_url() . "usuario/edit/$listaUsuario->idUsuario"?>"><button class="btn btn-success">Editar</button></a>
-                                                <a href="<?php echo base_url() . "usuario/deleteUsuario?idUsuario=" . $listaUsuario->idUsuario ?>"><button class="btn btn-danger">Deletar</button></a>                                                
+                                                <a href="<?php echo base_url() . "usuario/saldo/$listaUsuario->id "?>"><button class="btn btn-primary">Saldo</button></a>
+                                                <a href="<?php echo base_url() . "usuario/edit/$listaUsuario->id"?>"><button class="btn btn-success">Editar</button></a>
+                                                <a href="<?php echo base_url() . "usuario/deleteUsuario?id=" . $listaUsuario->id ?>"><button class="btn btn-danger">Deletar</button></a>                                                
                                             </td>																		
                                         </tr>		
                                         <?php
