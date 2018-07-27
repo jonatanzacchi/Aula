@@ -53,6 +53,7 @@ class Usuario extends CI_Controller {
             $this->Usuario_model->usuario = $this->input->post('usuario');
             $this->Usuario_model->senha = md5($this->input->post('senha'));
             $this->Usuario_model->status = $this->input->post('status');
+            $this->Usuario_model->saldo = $this->input->post('saldo');
 
             $this->Usuario_model->inserir();
 
@@ -124,4 +125,48 @@ class Usuario extends CI_Controller {
 			}			
 		}	
 	}
+        
+        public function saldo($idUsuario = null){		
+            if ($idUsuario) {			
+                $cadastros = $this->Usuario_model->get($idUsuario);
+                $data['listaUsuario'] = $this->Usuario_model->get_usuario();        
+                if ($cadastros->num_rows() > 0 ) {
+                        $data['titulo'] = 'Edição de Registro';
+                        $data['idUsuario'] = $cadastros->row()->idUsuario;
+                        $data['usuario'] = $cadastros->row()->usuario;
+                        $data['senha'] = $cadastros->row()->senha;
+                        $data['senha'] = $cadastros->row()->senha;
+                        $data['saldo'] = $cadastros->row()->saldo;
+
+
+                        $data['titulo'] = "Saldo";
+                        $data['pagina']='editarUsuario';
+                        $this->load->view('principal', $data);
+                        //$this->load->view('usuario', $variaveis);
+                } else {
+                        $variaveis['mensagem'] = "Registro não encontrado." ;
+                        $this->load->view('errors/html/v_erro', $variaveis);
+                }			
+            }	
+	}      
+                
+        public function atualizarSaldo(){
+			//Altera Saldo Usuário
+            $idUsuario = $this->input->post("idUsuario");
+            $saldo = $this->input->post("saldo");
+            $this->Usuario_model->idUsuario = $this->input->post('idUsuario');
+            $this->Usuario_model->usuario = $this->input->post('usuario');
+            $this->Usuario_model->saldo = $this->input->post('saldo');
+			
+			//Altera Saldo Logado
+			$idLogado = $this->input->post("idLogado");
+			$saldoLogado = $this->input->post("saldoLogado");			
+            
+            $this->Usuario_model->editarSaldo($idUsuario, $saldo);
+			$this->Usuario_model->editarSaldoLogado($idLogado, $saldoLogado);
+            echo "<script>      
+                    alert('Editado com Sucesso.');
+                    location.href='http://localhost/farina/aula/codeigniter/usuario';   
+                </script>";
+        }
 }
