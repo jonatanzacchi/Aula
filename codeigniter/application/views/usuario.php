@@ -6,13 +6,24 @@
     }
     $idLogado = $_SESSION['id'];
 ?>
+<script>
+    function mostraStatus(status){
+        $("#select_status").on("change",function(){
+        if ($(this).val()=="2"){
+                $("#datainativacao").val("<?php  
+                date_default_timezone_set('America/Sao_Paulo');
+                echo date("Y-m-d H:i:s"); ?>");
+        }
+        })
+    }
+</script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
         <div id="container">
             <h1 align="center">Usuários</h1>
             <?php
-                    echo "Usuário: " . $idLogado;
-        ?>
+                echo "Usuário: " . $idLogado;
+            ?>
             <hr>	
             <form action="<?php echo base_url() . 'usuario/novo' ?>" name="formulario" method="post">
                 <div class="row">
@@ -32,16 +43,13 @@
                         <label>Senha:</label>
                         <input type="password" name="senha" id="senha" class="form-control" <?php echo (empty($id) ? "" : "readonly='yes'"); ?> value="<?php echo (!isset($senha) ? "" : $senha); ?>" required>
                     </div>
-                    <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Status:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="status" value="1" <?php if(@$status == "1"){echo "checked=\"checked\"";} ?>>
-                            <label class="form-check-label" for="status">Ativo</label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status" value="0" <?php if(@$status == "2"){echo "checked=\"checked\"";} ?>>
-                        <label class="form-check-label" for="status">Desativado</label>
-                      </div>                  
+                        <select class="form-control" id="select_status" name ="status" onchange='mostraStatus($(this).val())' required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="1" <?php if(!isset($status)){ echo "";}elseif($status == "1"){echo "selected";} ?>>Ativo</option>
+                            <option value="2" <?php if(!isset($status)){ echo "";}elseif($status == "2"){echo "selected";} ?>>Desabilidado</option>
+                        </select>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Data Ativação:</label>
@@ -49,7 +57,7 @@
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label>Data Inativação:</label>
-                            <input type="datetime-local" name="datainativacao" id="datainativacao" class="form-control" value="<?php echo (!isset($datainativacao) ? "" : $datainativacao); ?>" required>
+                            <input type="text" name="datainativacao" id="datainativacao" class="form-control" value="<?php echo (!isset($datainativacao) ? "" : $datainativacao); ?>" required>
                         </div>
 
                     <div class="form-group col-md-12" align="right">
