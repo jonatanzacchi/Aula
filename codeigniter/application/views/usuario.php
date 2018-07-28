@@ -11,7 +11,7 @@
         <div id="container">
             <h1 align="center">Usuários</h1>
             <?php
-                    echo "Usuário: " . $idLogado . "TEste";
+                    echo "Usuário: " . $idLogado;
         ?>
             <hr>	
             <form action="<?php echo base_url() . 'usuario/novo' ?>" name="formulario" method="post">
