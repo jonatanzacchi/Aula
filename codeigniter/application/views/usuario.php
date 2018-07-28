@@ -8,6 +8,7 @@
 ?>
 <script>
     function mostraStatus(status){
+        alert(status);
         $("#select_status").on("change",function(){
         if ($(this).val()=="2"){
                 $("#datainativacao").val("<?php  
@@ -15,6 +16,23 @@
                 echo date("Y-m-d H:i:s"); ?>");
         }
         })
+    }
+</script>
+<script>
+    function troca(){
+        valor = document.getElementById('status').value;
+        valortexto = document.getElementById('datainativacao').value; 
+
+        if(valor == 1){
+            document.getElementById('datainativacao').value = "<?php  
+                        echo "2099-12-31 00:00:00" ?>";
+        }
+
+        if(valor == 2){
+            document.getElementById('datainativacao').value = "<?php  
+                        date_default_timezone_set('America/Sao_Paulo');
+                        echo date("Y-m-d H:i:s"); ?>";
+        }
     }
 </script>
 
@@ -45,7 +63,7 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Status:</label>
-                        <select class="form-control" id="select_status" name ="status" onchange='mostraStatus($(this).val())' required>
+                        <select class="form-control" id="status" onblur="troca()" name ="status" required>
                             <option value="" disabled selected>Selecione</option>
                             <option value="1" <?php if(!isset($status)){ echo "";}elseif($status == "1"){echo "selected";} ?>>Ativo</option>
                             <option value="2" <?php if(!isset($status)){ echo "";}elseif($status == "2"){echo "selected";} ?>>Desabilidado</option>
@@ -57,7 +75,7 @@
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label>Data Inativação:</label>
-                            <input type="text" name="datainativacao" id="datainativacao" class="form-control" value="<?php echo (!isset($datainativacao) ? "" : $datainativacao); ?>" required>
+                            <input type="text" name="datainativacao" id="datainativacao" class="form-control" value="<?php echo (!isset($datainativacao) ? "" : $datainativacao); ?>">
                         </div>
 
                     <div class="form-group col-md-12" align="right">
