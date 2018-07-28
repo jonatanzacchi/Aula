@@ -12,7 +12,7 @@ class Fpdf_test extends CI_Controller {
 	public function index() {	
 		$this->load->library('fpdf_gen');
 		
-		$this->fpdf->Image('https://idroot.net/wp-content/uploads/2015/09/codeigniter-logo.jpg',10,8,10);
+		//$this->fpdf->Image('https://idroot.net/wp-content/uploads/2015/09/codeigniter-logo.jpg',10,8,10);
 		
 		$this->fpdf->SetFont('Arial','B',16);
 		$this->fpdf->Cell(40,30,'Documentação FPDF:');

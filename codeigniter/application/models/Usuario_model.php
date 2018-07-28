@@ -2,10 +2,12 @@
 
 class Usuario_model extends CI_Model {
 
-    public $idUsuario;
-    public $usuario;
+    public $id;
+    public $user;
     public $senha;
     public $status;
+    public $dataativacao;
+    public $datainativacao;
 
     public function __construct() {
         parent::__construct();
@@ -30,8 +32,8 @@ class Usuario_model extends CI_Model {
             $this->db->delete('usuarios');
     }
         
-    function editarUsuario($idUsuario){   
-        $this->db->where('idUsuario', $idUsuario);
+    function editarUsuario($id){   
+        $this->db->where('id', $id);
         $this->db->update('usuarios', $this);
     } 
     
@@ -43,15 +45,15 @@ class Usuario_model extends CI_Model {
 	
 	function editarSaldoLogado($idLogado, $saldoLogado){
         $this->db->set('saldo', $saldoLogado);
-        $this->db->where('idUsuario', $idLogado);
+        $this->db->where('id', $idLogado);
         $this->db->update('usuarios');
     }
         
     public function login_user($usuario,$senha){
  
         $this->db->select('*');
-        $this->db->from('usuarios');
-        $this->db->where('usuario',$usuario);
+        $this->db->from('usuarios');        
+        $this->db->where('user',$usuario);
         $this->db->where('senha',$senha);
         $this->db->where('status',1);
 
@@ -62,12 +64,12 @@ class Usuario_model extends CI_Model {
         } 
     }
     
-    public function get($idUsuario = null){
+    public function get($id = null){
 		
-		if ($idUsuario) {
-			$this->db->where('idUsuario', $idUsuario);
+		if ($id) {
+			$this->db->where('id', $id);
 		}
-		$this->db->order_by("idUsuario", 'desc');
+		$this->db->order_by("id", 'desc');
 		return $this->db->get('usuarios');
     }
 }

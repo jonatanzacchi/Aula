@@ -19,7 +19,7 @@
         }
     </style>
     <?php
-        $dataativacao = date('d/m/y h:m:s');
+        $dataativacao = date('d/m/Y h:m:s');
     ?>
 
     <body>    
@@ -90,7 +90,7 @@
                                             <label class="form-check-label" for="status">Ativo</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status" id="status" value="2">
+                                            <input class="form-check-input" type="radio" name="status" id="status" value="0">
                                             <label class="form-check-label" for="status">Desativado</label>
                                         </div>
                                     </div>

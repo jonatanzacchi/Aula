@@ -41,19 +41,21 @@ class Usuario extends CI_Controller {
         
 	public function novo(){
 	   
-   $idUsuario = $this->input->post("idUsuario");
+        $id = $this->input->post("id");
 	//$uf = $this->input->post("uf");
 	//$nomeEstado = $this->input->post("nomeEstado");
 	
 	//echo "ID:" . $idEstado;
 	//$dados = array();
        
-		if(empty($idUsuario)){
+		if(empty($id)){
             $dados = array();
-            $this->Usuario_model->usuario = $this->input->post('usuario');
+            $this->Usuario_model->user = $this->input->post('usuario');
             $this->Usuario_model->senha = md5($this->input->post('senha'));
             $this->Usuario_model->status = $this->input->post('status');
-            $this->Usuario_model->saldo = $this->input->post('saldo');
+            $this->Usuario_model->dataativacao = $this->input->post('dataativacao');
+            $this->Usuario_model->datainativacao = $this->input->post('datainativacao');
+            //$this->Usuario_model->saldo = $this->input->post('saldo');
 
             $this->Usuario_model->inserir();
 
@@ -64,12 +66,12 @@ class Usuario extends CI_Controller {
                         location.href='http://localhost/aula/codeigniter/usuario';   
                     </script>";
 		}else{
-			$this->Usuario_model->idUsuario = $this->input->post('idUsuario');
-			$this->Usuario_model->usuario = $this->input->post('usuario');
+			$this->Usuario_model->id = $this->input->post('id');
+			$this->Usuario_model->user = $this->input->post('usuario');
 			$this->Usuario_model->senha = $this->input->post('senha');
 			$this->Usuario_model->status = $this->input->post('status');
 			
-			$this->Usuario_model->editarUsuario($idUsuario);
+			$this->Usuario_model->editarUsuario($id);
 			echo "<script>      
 						alert('Editado com Sucesso.');
 						location.href='http://localhost/aula/codeigniter/usuario';   
@@ -79,14 +81,14 @@ class Usuario extends CI_Controller {
 
     public function editarSenha() {
 
-		$idUsuario = $this->input->post("idUsuario");
+		$id = $this->input->post("id");
        
-        $this->Usuario_model->idUsuario = $this->input->post('idUsuario');
-        $this->Usuario_model->usuario = $this->input->post('usuario');
+        $this->Usuario_model->id = $this->input->post('id');
+        $this->Usuario_model->user = $this->input->post('usuario');
         $this->Usuario_model->senha = md5($this->input->post('senha'));
         $this->Usuario_model->status = $this->input->post('status');
         
-        $this->Usuario_model->editarUsuario($idUsuario);
+        $this->Usuario_model->editarUsuario($id);
         echo "<script>      
                     alert('Editado com Sucesso.');
                     location.href='http://localhost/aula/codeigniter/usuario';   
@@ -95,8 +97,8 @@ class Usuario extends CI_Controller {
 	}
 
     public function deleteUsuario(){
-		$idUsuario=$this->input->get('idUsuario');
-		$this->Usuario_model->deletarUsuario($idUsuario);
+		$id=$this->input->get('id');
+		$this->Usuario_model->deletarUsuario($id);
 		echo "Date deleted successfully !";
 		echo "<script>      
 				alert('Usuário deletado com sucesso.');
@@ -104,14 +106,14 @@ class Usuario extends CI_Controller {
 			</script>";
 	}
              
-	public function edit($idUsuario = null){		
-		if ($idUsuario) {			
-			$cadastros = $this->Usuario_model->get($idUsuario);
+	public function edit($id = null){		
+		if ($id) {			
+			$cadastros = $this->Usuario_model->get($id);
 			$data['listaUsuario'] = $this->Usuario_model->get_usuario();        
 			if ($cadastros->num_rows() > 0 ) {
 				$data['titulo'] = 'Edição de Registro';
-				$data['idUsuario'] = $cadastros->row()->idUsuario;
-				$data['usuario'] = $cadastros->row()->usuario;
+				$data['id'] = $cadastros->row()->id;
+				$data['usuario'] = $cadastros->row()->user;
 				$data['senha'] = $cadastros->row()->senha;
 				$data['status'] = $cadastros->row()->status;
 				
@@ -126,13 +128,13 @@ class Usuario extends CI_Controller {
 		}	
 	}
         
-        public function saldo($idUsuario = null){		
-            if ($idUsuario) {			
-                $cadastros = $this->Usuario_model->get($idUsuario);
+        public function saldo($id = null){		
+            if ($id) {			
+                $cadastros = $this->Usuario_model->get($id);
                 $data['listaUsuario'] = $this->Usuario_model->get_usuario();        
                 if ($cadastros->num_rows() > 0 ) {
                         $data['titulo'] = 'Edição de Registro';
-                        $data['idUsuario'] = $cadastros->row()->idUsuario;
+                        $data['id'] = $cadastros->row()->id;
                         $data['usuario'] = $cadastros->row()->usuario;
                         $data['senha'] = $cadastros->row()->senha;
                         $data['senha'] = $cadastros->row()->senha;
@@ -152,9 +154,9 @@ class Usuario extends CI_Controller {
                 
         public function atualizarSaldo(){
 			//Altera Saldo Usuário
-            $idUsuario = $this->input->post("idUsuario");
+            $id = $this->input->post("id");
             $saldo = $this->input->post("saldo");
-            $this->Usuario_model->idUsuario = $this->input->post('idUsuario');
+            $this->Usuario_model->id = $this->input->post('id');
             $this->Usuario_model->usuario = $this->input->post('usuario');
             $this->Usuario_model->saldo = $this->input->post('saldo');
 			
@@ -162,7 +164,7 @@ class Usuario extends CI_Controller {
 			$idLogado = $this->input->post("idLogado");
 			$saldoLogado = $this->input->post("saldoLogado");			
             
-            $this->Usuario_model->editarSaldo($idUsuario, $saldo);
+            $this->Usuario_model->editarSaldo($id, $saldo);
 			$this->Usuario_model->editarSaldoLogado($idLogado, $saldoLogado);
             echo "<script>      
                     alert('Editado com Sucesso.');
