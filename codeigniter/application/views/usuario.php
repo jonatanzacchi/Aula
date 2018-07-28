@@ -4,11 +4,15 @@
             unset($_SESSION['user']);
             header('location:login');
     }
+    $idLogado = $_SESSION['user'];
 ?>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
         <div id="container">
             <h1 align="center">Usuários</h1>
+            <?php
+                    echo "Usuário: " . $idLogado;
+        ?>
             <hr>	
             <form action="<?php echo base_url() . 'usuario/novo' ?>" name="formulario" method="post">
                 <div class="row">
@@ -35,11 +39,18 @@
                             <label class="form-check-label" for="status">Ativo</label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status" value="2" <?php if(@$status == "2"){echo "checked=\"checked\"";} ?>>
+                        <input class="form-check-input" type="radio" name="status" id="status" value="0" <?php if(@$status == "2"){echo "checked=\"checked\"";} ?>>
                         <label class="form-check-label" for="status">Desativado</label>
-                      </div>
-
+                      </div>                  
                     </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label>Data Ativação:</label>
+                        <input type="datetime" name="dataativacao" id="dataativacao" readonly class="form-control" value="<?php echo (!isset($dataativacao) ? "" : $dataativacao); ?>" required>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label>Data Inativação:</label>
+                            <input type="datetime-local" name="datainativacao" id="datainativacao" class="form-control" value="<?php echo (!isset($datainativacao) ? "" : $datainativacao); ?>" required>
+                        </div>
 
                     <div class="form-group col-md-12" align="right">
                         <a href="<?php echo base_url(). 'usuario' ?>" class="btn btn-danger">Cancelar</a>
@@ -77,7 +88,6 @@
                                             <td align=center><?php echo $listaUsuario->user; ?> </td>
                                             <td align=center><?php echo $listaUsuario->status; ?> </td>
                                             <td align=center>
-                                                <a href="<?php echo base_url() . "usuario/saldo/$listaUsuario->id "?>"><button class="btn btn-primary">Saldo</button></a>
                                                 <a href="<?php echo base_url() . "usuario/edit/$listaUsuario->id"?>"><button class="btn btn-success">Editar</button></a>
                                                 <a href="<?php echo base_url() . "usuario/deleteUsuario?id=" . $listaUsuario->id ?>"><button class="btn btn-danger">Deletar</button></a>                                                
                                             </td>																		

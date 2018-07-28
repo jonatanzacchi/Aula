@@ -54,15 +54,15 @@ class Login extends CI_Controller {
     function logarUsuario(){
         $user_login=array(
 
-        'usuario'=>$this->input->post('usuario'),
+        'user'=>$this->input->post('usuario'),
         'senha'=>md5($this->input->post('senha'))
 
         );
 
-        $data=$this->Usuario_model->login_user($user_login['usuario'],$user_login['senha']);
+        $data=$this->Usuario_model->login_user($user_login['user'],$user_login['senha']);
         if($data){
             $this->session->set_userdata('id',$data['id']);
-            $this->session->set_userdata('user',$data['usuario']);
+            $this->session->set_userdata('user',$data['user']);
             $this->session->set_userdata('senha',$data['senha']);
             // $this->load->view('usuario.php');
             redirect($this->index().'usuario'); 

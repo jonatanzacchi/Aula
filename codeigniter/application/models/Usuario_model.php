@@ -55,6 +55,7 @@ class Usuario_model extends CI_Model {
         $this->db->from('usuarios');        
         $this->db->where('user',$usuario);
         $this->db->where('senha',$senha);
+        $this->db->where('datainativacao > now()');
         $this->db->where('status',1);
 
         if($query=$this->db->get()){

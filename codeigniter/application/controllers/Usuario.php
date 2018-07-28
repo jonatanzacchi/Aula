@@ -70,6 +70,8 @@ class Usuario extends CI_Controller {
 			$this->Usuario_model->user = $this->input->post('usuario');
 			$this->Usuario_model->senha = $this->input->post('senha');
 			$this->Usuario_model->status = $this->input->post('status');
+                        $this->Usuario_model->dataativacao = $this->input->post('dataativacao');
+                        $this->Usuario_model->datainativacao = $this->input->post('datainativacao');
 			
 			$this->Usuario_model->editarUsuario($id);
 			echo "<script>      
@@ -116,6 +118,8 @@ class Usuario extends CI_Controller {
 				$data['usuario'] = $cadastros->row()->user;
 				$data['senha'] = $cadastros->row()->senha;
 				$data['status'] = $cadastros->row()->status;
+                                $data['dataativacao'] = $cadastros->row()->dataativacao;
+                                $data['datainativacao'] = $cadastros->row()->datainativacao;
 				
 				$data['titulo'] = "Usuários";
 				$data['pagina']='usuario';
