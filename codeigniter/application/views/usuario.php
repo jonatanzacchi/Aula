@@ -4,7 +4,7 @@
             unset($_SESSION['user']);
             header('location:login');
     }
-    $idLogado = $_SESSION['user'];
+    $idLogado = $_SESSION['id'];
 ?>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
