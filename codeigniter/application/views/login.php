@@ -28,7 +28,10 @@
         <div class="container col-md-offset-4 col-lg-4 col-md-3 col-sm-12 col-xs-12 formLogin">
             <div class="row">
                 <div class="card">
-                    <div class="card-header"><span>Login</span></div>
+                    <div class="card-header"> 
+                        <img src="<?php echo base_url(); ?>bootstrap-4/icone/icone.ico" height="42" width="42"> 
+                        <span>Login</span>
+                    </div>
                     <div class="card-body">
                         <form action="<?php echo base_url() . 'login/logarUsuario' ?>" method="post">
                             <div class="input-group mb-3">
