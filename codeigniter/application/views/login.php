@@ -84,26 +84,6 @@
                                         <label>Senha:</label>
                                         <input type="password" name="senha" id="senha" class="form-control" required>
                                     </div>
-                                    <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                        <label>Status:</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
-                                            <label class="form-check-label" for="status">Ativo</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="status" id="status" value="0">
-                                            <label class="form-check-label" for="status">Desativado</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <label>Data Ativação:</label>
-                                        <input type="datetime" name="dataativacao" id="dataativacao" readonly class="form-control" value="<?php echo $dataativacao ?>" required>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <label>Data Inativação:</label>
-                                        <input type="datetime-local" name="datainativacao" id="datainativacao" class="form-control" value="" required>
-                                    </div>
-
                                     <div class="form-group col-md-12" align="right">				
                                         <input type="submit" class="btn btn-success" value="Enviar">
                                     </div>			

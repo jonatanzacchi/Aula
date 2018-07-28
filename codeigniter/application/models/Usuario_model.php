@@ -18,7 +18,7 @@ class Usuario_model extends CI_Model {
     }
     
     public function get_usuario(){
-		$this->db->select("*, if(status = 1, 'Ativo', 'Não') as status");
+		$this->db->select("*, DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status");
 		$this->db->from("usuarios");
 
 		$query = $this->db->get();
@@ -68,6 +68,7 @@ class Usuario_model extends CI_Model {
     public function get($id = null){
 		
 		if ($id) {
+                    
 			$this->db->where('id', $id);
 		}
 		$this->db->order_by("id", 'desc');
