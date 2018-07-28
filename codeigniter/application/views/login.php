@@ -19,7 +19,8 @@
         }
     </style>
     <?php
-        $dataativacao = date('d/m/Y h:m:s');
+        date_default_timezone_set('America/Sao_Paulo');
+        $dataativacao = date('d/m/Y H:i:s', time());
     ?>
 
     <body>    
