@@ -6,35 +6,7 @@
     }
     $idLogado = $_SESSION['id'];
 ?>
-<script>
-    function mostraStatus(status){
-        alert(status);
-        $("#select_status").on("change",function(){
-        if ($(this).val()=="2"){
-                $("#datainativacao").val("<?php  
-                date_default_timezone_set('America/Sao_Paulo');
-                echo date("Y-m-d H:i:s"); ?>");
-        }
-        })
-    }
-</script>
-<script>
-    function troca(){
-        valor = document.getElementById('status').value;
-        valortexto = document.getElementById('datainativacao').value; 
-
-        if(valor == 1){
-            document.getElementById('datainativacao').value = "<?php  
-                        echo "2099-12-31 00:00:00" ?>";
-        }
-
-        if(valor == 2){
-            document.getElementById('datainativacao').value = "<?php  
-                        date_default_timezone_set('America/Sao_Paulo');
-                        echo date("Y-m-d H:i:s"); ?>";
-        }
-    }
-</script>
+ <script src="<?php echo base_url(); ?>bootstrap-4/js/personalizados/usuarios.js"></script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
         <div id="container">
@@ -63,10 +35,10 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Status:</label>
-                        <select class="form-control" id="status" onblur="troca()" name ="status" required>
-                            <option value="" disabled selected>Selecione</option>
-                            <option value="1" <?php if(!isset($status)){ echo "";}elseif($status == "1"){echo "selected";} ?>>Ativo</option>
-                            <option value="2" <?php if(!isset($status)){ echo "";}elseif($status == "2"){echo "selected";} ?>>Desabilidado</option>
+                        <select class="form-control" id="status" name ="status" required>
+                            <option disabled selected>Selecione</option>
+                            <option value="1">Ativo</option>
+                            <option value="2">Desabilidado</option>
                         </select>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
