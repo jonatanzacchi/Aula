@@ -7,7 +7,7 @@
     $idLogado = $_SESSION['id'];
 ?>
 
- <script src="<?php echo base_url(); ?>bootstrap-4/js/personalizados/usuarios.js"></script>
+<script src="<?php echo base_url(); ?>bootstrap-4/js/personalizados/usuarios.js"></script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
         <div id="container">

@@ -13,7 +13,7 @@ class Usuario_model extends CI_Model {
         parent::__construct();
     }
 
-    public function inserir($dados) {
+    public function inserir($usuario,$senha,$status,$dataativacao, $novaData) {
         //var_dump($dados);
         //exit;
         foreach ($dados as $dados) {
