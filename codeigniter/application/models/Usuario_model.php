@@ -13,15 +13,15 @@ class Usuario_model extends CI_Model {
         parent::__construct();
     }
 
-    public function inserir($usuario,$senha,$status,$dataativacao,$novaData) {
+    public function inserir($dados) {
         //var_dump($dados);
         //exit;
-        //foreach ($dados as $key => $value) {
-        //   echo $value;
-           //echo $key->$value;
-        //}
+        foreach ($dados as $dados) {
+          echo $dados[1];
+          echo $key->$value;
+       }
         
-       // exit;
+        exit;
         $sql= "INSERT INTO usuarios(user, senha, status, dataativacao, datainativacao) "
                 . "VALUES ('$usuario','$senha',$status,'$dataativacao','$novaData')";
         
@@ -31,11 +31,11 @@ class Usuario_model extends CI_Model {
     }
     
     public function get_usuario(){
-		$this->db->select("*,DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status");
-		//log_message("abc", $this->db->select("*, DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status"));
-                $this->db->from("usuarios");
+        $this->db->select("*,DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status");
+        //log_message("abc", $this->db->select("*, DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status"));
+        $this->db->from("usuarios");
 
-		$query = $this->db->get();
+        $query = $this->db->get();
         return $query->result();
     }
     

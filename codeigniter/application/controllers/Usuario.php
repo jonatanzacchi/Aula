@@ -51,10 +51,8 @@ class Usuario extends CI_Controller {
             $senha = md5($this->input->post('senha'));
             $status = 1;
             $datainativacao = $this->input->post('datainativacao');
-            
-            
 
-       $novaData = date('Y-m-d H:i:s', strtotime($datainativacao));
+            $novaData = date('Y-m-d H:i:s', strtotime($datainativacao));
            
             $dados = array(
                 "id" => $id,
