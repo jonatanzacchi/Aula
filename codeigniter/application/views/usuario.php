@@ -6,6 +6,7 @@
     }
     $idLogado = $_SESSION['id'];
 ?>
+
  <script src="<?php echo base_url(); ?>bootstrap-4/js/personalizados/usuarios.js"></script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">            
@@ -37,13 +38,13 @@
                         <label>Status:</label>
                         <select class="form-control" id="status" name ="status" required>
                             <option disabled selected>Selecione</option>
-                            <option value="1">Ativo</option>
-                            <option value="2">Desabilidado</option>
+                            <option value="1" <?php if(!isset($status)){ echo "";}elseif($status == "1"){echo "selected";} ?>>Ativo</option>
+                            <option value="2" <?php if(!isset($status)){ echo "";}elseif($status == "2"){echo "selected";} ?>>Desabilidado</option>
                         </select>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                         <label>Data Ativação:</label>
-                        <input type="datetime" name="dataativacao" id="dataativacao" readonly class="form-control" value="<?php echo (!isset($dataativacao) ? "" : $dataativacao); ?>" required>
+                        <input type="text" name="dataativacao" id="dataativacao" class="form-control" value="<?php echo (!isset($dataativacao) ? "" : $dataativacao); ?>" required>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label>Data Inativação:</label>
@@ -84,7 +85,7 @@
                                         <tr>
                                             <td align=center><?php echo $listaUsuario->id; ?> </td>
                                             <td align=center><?php echo $listaUsuario->user; ?> </td>
-                                            <td align=center><?php echo $listaUsuario->status; ?> </td>
+                                            <td align=center><?php echo $listaUsuario->dataativacao; ?> </td>
                                             <td align=center>
                                                 <a href="<?php echo base_url() . "usuario/edit/$listaUsuario->id"?>"><button class="btn btn-success">Editar</button></a>
                                                 <a href="<?php echo base_url() . "usuario/deleteUsuario?id=" . $listaUsuario->id ?>"><button class="btn btn-danger">Deletar</button></a>                                                

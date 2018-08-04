@@ -13,13 +13,27 @@ class Usuario_model extends CI_Model {
         parent::__construct();
     }
 
-    public function inserir() {
-        return $this->db->insert('usuarios', $this);
+    public function inserir($usuario,$senha,$status,$dataativacao,$novaData) {
+        //var_dump($dados);
+        //exit;
+        //foreach ($dados as $key => $value) {
+        //   echo $value;
+           //echo $key->$value;
+        //}
+        
+       // exit;
+        $sql= "INSERT INTO usuarios(user, senha, status, dataativacao, datainativacao) "
+                . "VALUES ('$usuario','$senha',$status,'$dataativacao','$novaData')";
+        
+       $retorno = $this->db->query($sql);
+        
+       // $this->db->insert('usuarios', $dados);
     }
     
     public function get_usuario(){
-		$this->db->select("*, DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status");
-		$this->db->from("usuarios");
+		$this->db->select("*,DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status");
+		//log_message("abc", $this->db->select("*, DATE_FORMAT(dataativacao,'%d/%m/%Y %H:%i:%s') AS dataativacao, if(status = 1, 'Ativo', 'Não') as status"));
+                $this->db->from("usuarios");
 
 		$query = $this->db->get();
         return $query->result();

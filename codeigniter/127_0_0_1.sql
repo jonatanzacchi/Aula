@@ -64,10 +64,10 @@ CREATE TABLE `cadastro` (
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `user` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `senha` int(20) NOT NULL,
+  `senha` varchar(150) NOT NULL,
   `status` smallint(6) NOT NULL COMMENT '1-ativo; 0-inativo',
   `dataativacao` datetime NOT NULL,
-  `datainativacao` datetime NOT NULL
+  `datainativacao` datetime NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

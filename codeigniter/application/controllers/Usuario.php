@@ -46,14 +46,27 @@ class Usuario extends CI_Controller {
         date_default_timezone_set('America/Sao_Paulo');
         $dataativacao = date('Y/m/d H:i:s', time());
         if(empty($id)){
-            $this->Usuario_model->user = $this->input->post('usuario');
-            $this->Usuario_model->senha = md5($this->input->post('senha'));
-            $this->Usuario_model->status = 1;
-            $this->Usuario_model->dataativacao = $dataativacao;
-            $this->Usuario_model->datainativacao = $this->input->post('datainativacao');
-            //$this->Usuario_model->saldo = $this->input->post('saldo');
+           
+            $usuario = $this->input->post('usuario');
+            $senha = md5($this->input->post('senha'));
+            $status = 1;
+            $datainativacao = $this->input->post('datainativacao');
+            
+            
 
-            $this->Usuario_model->inserir();
+       $novaData = date('Y-m-d H:i:s', strtotime($datainativacao));
+           
+            $dados = array(
+                "id" => $id,
+                "user" => $usuario,
+                "senha" => $senha,
+                "status" => $status,
+                "dataativacao" => $dataativacao,
+                "datainativacao" => $datainativacao
+            );
+            
+
+            $this->Usuario_model->inserir($usuario,$senha,$status,$dataativacao, $novaData);
 
             //$this->load->view('pessoa');
 
@@ -71,9 +84,9 @@ class Usuario extends CI_Controller {
 
             $this->Usuario_model->editarUsuario($id);
             echo "<script>      
-                                    alert('Editado com Sucesso.');
-                                    location.href='http://localhost/aula/codeigniter/usuario';   
-                            </script>";
+                    alert('Editado com Sucesso.');
+                    location.href='http://localhost/aula/codeigniter/usuario';   
+                </script>";
        }
 	}
 

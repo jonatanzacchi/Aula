@@ -9,6 +9,22 @@
 		<link href="<?php echo base_url(); ?>bootstrap-4/dataTables/jquery.dataTables.min.css" rel="stylesheet"/>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>bootstrap-4/icone/icone.ico">
+                
+                
+    <script src="<?php echo base_url(); ?>jquery-3.3.1.slim.min.js"></script>
+    <script src="<?php echo base_url(); ?>popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>bootstrap-4/js/bootstrap.min.js"></script>
+
+    <!-- Atente-se para a ordem: primeiro jquery, depois locastyle, depois o JS do Bootstrap. -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>locastyle.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>bootstrap-4/dataTables/jquery.dataTables.min.js"></script>
+         <script src="<?php echo base_url(); ?>bootstrap-4/js/personalizados/dateFormat.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable();
+		} );
+	</script>
     </head>
     <body>
 
@@ -86,19 +102,6 @@
 		
     </body>
 
-    <script src="<?php echo base_url(); ?>jquery-3.3.1.slim.min.js"></script>
-    <script src="<?php echo base_url(); ?>popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>bootstrap-4/js/bootstrap.min.js"></script>
-
-    <!-- Atente-se para a ordem: primeiro jquery, depois locastyle, depois o JS do Bootstrap. -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>locastyle.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>bootstrap-4/dataTables/jquery.dataTables.min.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$('#dataTables-example').DataTable();
-		} );
-	</script>
 	
 
 </html>
